@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    semi: ["error", "never"]
+    semi: ["error", "never"],
+    '@typescript-eslint/no-var-requires':'off'
   }
 }

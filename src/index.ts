@@ -1,3 +1,6 @@
-import { yellow } from 'chalk'
 // 老看下是不是配置文件存放的目录
-console.log(yellow(process.env.HOME))
+import Logger from './utils/logger'
+Logger.info(process.env.HOME)
+Logger.success('success')
+Logger.error('error')
+Logger.warn('warn')

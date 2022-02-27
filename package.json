@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/xhl592576605/temp-cli#readme",
   "dependencies": {
+    "cac":"^6.7.12",
     "chalk": "^4.1.0",
     "clear-console": "^1.1.0",
     "commander": "^6.2.0",
