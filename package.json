@@ -1,44 +1,35 @@
 {
   "name": "temp-cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "temp-cli",
-  "main": "dist/temp-cli.cjs.js",
-  "unpkg": "dist/temp-cli.global.js",
-  "jsdelivr": "dist/temp-cli.global.js",
-  "module": "dist/temp-cli.esm-bundler.js",
-  "umd": "dist/temp-cli.umd.js",
-  "types": "dist/temp-cli.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "outputName": "tempcli",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "lint": "eslint \"src/**\" --fix  --ext .js，.jsx，.ts，.tsx --config .eslintrc.js ",
-    "build": "npm run \"build:ts\" && npm run build:dts",
-    "build:ts": "rollup -c rollup.config.js",
-    "build:dts": "api-extractor run --local --verbose && tail -n +5 src/globalExtensions.ts >> dist/temp-cli.d.ts ",
-    "show": "yalc installations show",
-    "watch": "nodemon --ignore dist/ --ignore node_modules/ --watch src/ -C -e ts,tsx,scss -x \"npm run build\""
+    "build": "rm -rf dist && tsc --build",
+    "watch": "nodemon --ignore dist/ --ignore node_modules/ --watch src/ -C -e ts -x \"npm run build\""
+
   },
   "bin": {
     "temp-cli": "./bin/temp-cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xhl592576605/front.git"
+    "url": "git@github.com:xhl592576605/temp-cli.git"
   },
   "keywords": [],
   "files": [
     "bin",
-    "dist/*.js",
-    "dist/temp-cli.d.ts",
+    "dist",
     "README.md"
   ],
-  "author": "front",
+  "author": "temp-cli",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xhl592576605/front/issues"
+    "url": "https://github.com/xhl592576605/temp-cli/issues"
   },
-  "homepage": "https://github.com/xhl592576605/front#readme",
+  "homepage": "https://github.com/xhl592576605/temp-cli#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "clear-console": "^1.1.0",

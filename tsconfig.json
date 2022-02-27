@@ -1,38 +1,25 @@
 {
-  "include": [
-    "src/global.d.ts",
-    "src/**/*.ts",
-    "__tests__/**/*.ts"
-  ],
+  "compileOnSave": true,
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "noEmit": true,
     "target": "ES2018",
     "module": "commonjs",
     "moduleResolution": "node",
-    "allowJs": false,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "strict": true,
-    "isolatedModules": false,
     "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "suppressImplicitAnyIndexErrors":true,
-    "jsx": "preserve",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "node"
-    ]
-  }
+    "emitDecoratorMetadata": true,
+    "inlineSourceMap":true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "stripInternal": true,
+    "pretty": true,
+    "declaration": true,
+    "outDir": "dist",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*"]
+    }
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+  ]
 }
