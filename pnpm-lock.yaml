@@ -9,6 +9,7 @@ specifiers:
   '@rollup/plugin-replace': ^2.3.4
   '@rollup/plugin-strip': ^2.0.0
   '@types/figlet': ^1.5.4
+  '@types/fs-extra': ^9.0.13
   '@types/js-cookie': ^2.2.6
   '@types/lodash': ^4.14.168
   '@types/node': ^17.0.20
@@ -22,6 +23,7 @@ specifiers:
   easy-table: ^1.2.0
   eslint: ^7.27.0
   figlet: ^1.5.2
+  fs-extra: ^10.0.1
   inquirer: ^7.3.3
   lodash: ^4.17.20
   nodemon: ^2.0.7
@@ -44,6 +46,7 @@ dependencies:
   commander: 6.2.1
   easy-table: 1.2.0
   figlet: 1.5.2
+  fs-extra: 10.0.1
   inquirer: 7.3.3
   ora: 6.1.0
   shelljs: 0.8.5
@@ -58,6 +61,7 @@ devDependencies:
   '@rollup/plugin-replace': 2.4.2_rollup@2.68.0
   '@rollup/plugin-strip': 2.1.0_rollup@2.68.0
   '@types/figlet': 1.5.4
+  '@types/fs-extra': 9.0.13
   '@types/js-cookie': 2.2.7
   '@types/lodash': 4.14.178
   '@types/node': 17.0.20
@@ -400,6 +404,12 @@ packages:
 
   /@types/figlet/1.5.4:
     resolution: {integrity: sha512-cskPTju7glYgzvkJy/hftqw7Fen3fsd0yrPOqcbBLJu+YdDQuA438akS1g+2XVKGzsQOnXGV2I9ePv6xUBnKMQ==}
+    dev: true
+
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+    dependencies:
+      '@types/node': 17.0.20
     dev: true
 
   /@types/js-cookie/2.2.7:
@@ -1367,6 +1377,15 @@ packages:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
     dev: true
 
+  /fs-extra/10.0.1:
+    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.9
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: false
+
   /fs-extra/7.0.1:
     resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}
     engines: {node: '>=6 <7 || >=8'}
@@ -1377,7 +1396,7 @@ packages:
     dev: true
 
   /fs-extra/8.1.0:
-    resolution: {integrity: sha1-SdQ8RaiM2Wd2aMt74bRu/bjS4cA=, tarball: fs-extra/download/fs-extra-8.1.0.tgz}
+    resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
     engines: {node: '>=6 <7 || >=8'}
     dependencies:
       graceful-fs: 4.2.9
@@ -1500,7 +1519,6 @@ packages:
 
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
-    dev: true
 
   /has-bigints/1.0.1:
     resolution: {integrity: sha512-LSBS2LjbNBTf6287JEbEzvJgftkF5qFkmCo9hDRpAzKhUOlJ+hx8dd4USs00SgsUNwc4617J9ki5YtEClM2ffA==}
@@ -1876,6 +1894,14 @@ packages:
     optionalDependencies:
       graceful-fs: 4.2.9
     dev: true
+
+  /jsonfile/6.1.0:
+    resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
+    dependencies:
+      universalify: 2.0.0
+    optionalDependencies:
+      graceful-fs: 4.2.9
+    dev: false
 
   /keyv/3.1.0:
     resolution: {integrity: sha512-9ykJ/46SN/9KPM/sichzQ7OvXyGDYKGTaDlKMGCAlg2UK8KRy4jb0d8sFc+0Tt0YYnThq8X2RZgCg74RPxgcVA==}
@@ -3014,6 +3040,11 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
     dev: true
+
+  /universalify/2.0.0:
+    resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
+    engines: {node: '>= 10.0.0'}
+    dev: false
 
   /update-notifier/5.1.0:
     resolution: {integrity: sha512-ItnICHbeMh9GqUy31hFPrD1kcuZ3rpxDZbf4KUDavXwS0bW5m7SLbDQpGX3UYr072cbrF5hFUs3r5tUsPwjfHw==}

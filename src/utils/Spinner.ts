@@ -23,12 +23,15 @@ export default class Spinner implements ISpinner {
   remove() {
     this.spinnies.remove(this.key)
   }
+  
   update(text: string) {
     this.spinnies.update(this.key, { text })
   }
+
   succeed(text: string) {
     this.spinnies.succeed(this.key, { text })
   }
+
   fail(text: string) {
     this.spinnies.fail(this.key, { text })
   }
