@@ -19,10 +19,21 @@ const getAddAndUpdatePrompt = (type: 'add' | 'update'): Promise<any> => {
           return true
         }
       }
-    }, {
+    },
+    {
+      type: 'rawlist',
+      name: 'reposSource',
+      message: 'reposSource',
+      choices: [
+        { name: 'github', value: 'github' },
+        { name: 'gitlab', value: 'gitlab' },
+        { name: 'gitee', value: 'gitee' }
+      ]
+    },
+    {
       type: 'input',
-      name: 'url',
-      message: 'url',
+      name: 'apiUrl',
+      message: 'apiUrl',
     }, {
       type: 'input',
       name: 'token',
@@ -85,4 +96,9 @@ export const deleteConf = async () => {
   }
   Logger.success('delete conf success')
 
+}
+
+export const showConf = async () => {
+  const config = Config.getConfigs()
+  Logger.info(`\n ${JSON.stringify(config, null, 2)}`)
 }

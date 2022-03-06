@@ -1,10 +1,11 @@
-import { addConf, updateConf, deleteConf } from './action'
+import { addConf, updateConf, deleteConf, showConf } from './action'
 export default (cli) => {
   cli
     .command('conf', ' cli  config')
-    .option('--add', 'add conf')
-    .option('--update', 'update conf')
-    .option('--delete', 'delete conf')
+    .option('-a, --add', 'add conf')
+    .option('-u, --update', 'update conf')
+    .option('-d, --delete', 'delete conf')
+    .option('-s, --show', 'show conf')
     .action(async (option: any) => {
       if (option.add) {
         await addConf()
@@ -14,6 +15,9 @@ export default (cli) => {
       }
       if (option.delete) {
         await deleteConf()
+      }
+      if(option.show) {
+        showConf()
       }
     })
 }  
