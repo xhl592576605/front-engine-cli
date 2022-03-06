@@ -41,6 +41,10 @@ export default class Config {
       this.createConfigFile()
     }
     const config = this.getConfigs()
+    const oldconf = config[name]
+    if (oldconf) {
+      throw new Error(` ${name} conf, already exists`)
+    }
     config[name] = conf
     this.writeConfigFile(config)
   }
@@ -52,19 +56,19 @@ export default class Config {
     const config = this.getConfigs()
     const oldconf = config[name]
     if (!oldconf) {
-      return new Error(`no ${name} config, can't update`)
+      throw new Error(`no ${name} conf, can't update`)
     }
     config[name] = conf
     this.writeConfigFile(config)
   }
 
   static delete(name: string) {
-    if (this.isExistsConfigFile()) {
+    if (!this.isExistsConfigFile()) {
       this.createConfigFile()
     }
     const config = this.getConfigs()
     if (!config[name]) {
-      return new Error(`no ${name} config, can't delete`)
+      throw new Error(`no ${name} conf, can't delete`)
     }
     delete config[name]
     this.writeConfigFile(config)
