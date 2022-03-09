@@ -1,5 +1,6 @@
-import { addConf, updateConf, deleteConf, showConf } from './action'
+import { addConf, updateConf, deleteConf, showConf, initConfig } from './action'
 export default (cli) => {
+  initConfig()
   cli
     .command('conf', ' cli  config')
     .option('-a, --add', 'add conf')

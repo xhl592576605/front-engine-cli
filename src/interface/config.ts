@@ -1,5 +1,8 @@
 export interface IConf {
-  url: string,
+  name:string;
+  reposSource:string;
+  api: string,
+  ssh?:string
   token?: string
 }
 export interface ITempConf {

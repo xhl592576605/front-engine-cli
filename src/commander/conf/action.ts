@@ -9,6 +9,9 @@ const getAddAndUpdatePrompt = (type: 'add' | 'update'): Promise<any> => {
       name: 'name',
       message: 'name',
       validate: (name) => {
+        if (name === '') {
+          return 'name must required'
+        }
         const configs = Config.getConfigs()
         const conf = configs[name]
         if (type === 'add' && conf) {
@@ -23,17 +26,35 @@ const getAddAndUpdatePrompt = (type: 'add' | 'update'): Promise<any> => {
     {
       type: 'rawlist',
       name: 'reposSource',
-      message: 'reposSource',
+      message: 'repos source (official or custom)',
       choices: [
         { name: 'github', value: 'github' },
         { name: 'gitlab', value: 'gitlab' },
-        { name: 'gitee', value: 'gitee' }
+        { name: 'gitee', value: 'gitee' },
+        { name: 'direct', value: 'direct' }
       ]
     },
     {
       type: 'input',
-      name: 'apiUrl',
-      message: 'apiUrl',
+      name: 'ssh',
+      message: 'sshUrl',
+      validate: (ssh, { reposSource }) => {
+        if (reposSource === 'direct' && ssh === '') {
+          return 'reposSource is direct ,ssh must required '
+        }
+        return true
+      }
+    },
+    {
+      type: 'input',
+      name: 'api',
+      message: 'api',
+      validate: (api) => {
+        if (api === '') {
+          return 'api must required'
+        }
+        return true
+      }
     }, {
       type: 'input',
       name: 'token',
@@ -101,4 +122,17 @@ export const deleteConf = async () => {
 export const showConf = async () => {
   const config = Config.getConfigs()
   Logger.info(`\n ${JSON.stringify(config, null, 2)}`)
+}
+
+export const initConfig = async () => {
+  const isExit = Config.isExistsConfigFile()
+  if (!isExit) {
+    Config.writeConfigFile({
+      github: {
+        name: 'github',
+        reposSource: 'github',
+        api: 'https://api.github.com/'
+      }
+    })
+  }
 }
