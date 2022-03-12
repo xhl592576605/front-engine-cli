@@ -1,3 +1,3 @@
 ### front-engine-cli 脚手架
 
-<img src="docs/temp-cli.gif" alt="temp-cli" style="zoom:200%;" />
+<img src="docs/fengine.gif" alt="temp-cli"  />
