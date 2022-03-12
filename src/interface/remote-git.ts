@@ -7,8 +7,8 @@ export interface IRepos {
 export default interface IRemoteGit {
   getOrgRepos: (name: string) => Promise<Array<IRepos>>
   getUserRepos: (name: string) => Promise<Array<IRepos>>
-  getOrgBranches: (reposUrl: string) => Promise<Array<string>>
-  getUserBranches: (reposUrl: string) => Promise<Array<string>>
-  getOrgTags: (reposUrl: string) => Promise<Array<string>>
-  getUserTags: (reposUrl: string) => Promise<Array<string>>
+  getOrgBranches: (group: string, repos: string) => Promise<Array<string>>
+  getUserBranches: (group: string, repos: string) => Promise<Array<string>>
+  getOrgTags: (group: string, repos: string) => Promise<Array<string>>
+  getUserTags: (group: string, repos: string) => Promise<Array<string>>
 }

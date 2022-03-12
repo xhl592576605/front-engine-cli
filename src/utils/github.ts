@@ -1,11 +1,13 @@
+import { IConf } from "../interface/config"
 import { Octokit } from "octokit"
 import IRemoteGit from '../interface/remote-git'
 
 export default class Github implements IRemoteGit {
   octokit: Octokit
-
-  constructor(option = { url: 'https://api.github.com/' }) {
-    this.octokit = new Octokit(option)
+  conf: IConf
+  constructor(conf: IConf) {
+    this.conf = conf
+    this.octokit = new Octokit({ url: this.conf.api })
   }
 
   async getOrgRepos(name) {
@@ -17,11 +19,7 @@ export default class Github implements IRemoteGit {
         data: []
       }
     })
-    result = res.data.map(x => ({
-      name: x.name,
-      fullName: x.full_name,
-      url: x.url
-    }))
+    result = res.data.map(x => x.name)
     return result
   }
 
@@ -34,17 +32,18 @@ export default class Github implements IRemoteGit {
         data: []
       }
     })
-    result = res.data.map(x => ({
-      name: x.name,
-      fullName: x.full_name,
-      url: x.url
-    }))
+    // result = res.data.map(x => ({
+    //   name: x.name,
+    //   fullName: x.full_name,
+    //   url: x.url
+    // }))
+    result = res.data.map(x => x.name)
     return result
   }
 
-  async getOrgBranches(reposUrl) {
+  async getOrgBranches(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET ${reposUrl}/branches`).catch(() => {
+    const res = await this.octokit.request(`GET /repos/${group}/${repos}/branches`).catch(() => {
       return {
         data: []
       }
@@ -53,9 +52,9 @@ export default class Github implements IRemoteGit {
     return result
   }
 
-  async getUserBranches(reposUrl) {
+  async getUserBranches(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET ${reposUrl}/branches`).catch(() => {
+    const res = await this.octokit.request(`GET /repos/${group}/${repos}/branches`).catch(() => {
       return {
         data: []
       }
@@ -63,9 +62,9 @@ export default class Github implements IRemoteGit {
     result = res.data.map(x => x.name)
     return result
   }
-  async getOrgTags(reposUrl) {
+  async getOrgTags(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET ${reposUrl}/tags`).catch(() => {
+    const res = await this.octokit.request(`GET /repos/${group}/${repos}/tags`).catch(() => {
       return {
         data: []
       }
@@ -74,9 +73,9 @@ export default class Github implements IRemoteGit {
     return result
   }
 
-  async getUserTags(reposUrl) {
+  async getUserTags(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET ${reposUrl}/tags`).catch(() => {
+    const res = await this.octokit.request(`GET /repos/${group}/${repos}/tags`).catch(() => {
       return {
         data: []
       }
