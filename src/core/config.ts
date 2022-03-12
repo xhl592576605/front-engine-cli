@@ -4,7 +4,7 @@ const fs = require('fs')
 const fsExtra = require('fs-extra')
 
 export default class Config {
-  static fileName = '.tempclirc'
+  static fileName = '.fenginerc'
   static basePath = process.env.HOME
   static path = `${this.basePath}/${this.fileName}`
 
