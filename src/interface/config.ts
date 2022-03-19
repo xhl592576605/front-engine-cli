@@ -4,6 +4,7 @@ export interface IConf {
   api: string,
   ssh?:string
   token?: string
+  options?:string
 }
 export interface ITempConf {
   [key: string]: IConf

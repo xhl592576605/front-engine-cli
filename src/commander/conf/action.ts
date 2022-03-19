@@ -55,12 +55,25 @@ const getAddAndUpdatePrompt = (type: 'add' | 'update'): Promise<any> => {
         }
         return true
       }
-    }, {
+    },
+    {
       type: 'input',
       name: 'token',
       message: 'token',
       default: 'token'
-    }]).then(result => {
+    },
+    {
+      type: 'editor',
+      name: 'options',
+      default:'{}',
+      message: 'options ,set org,usr branches tag api',
+      validate: (options, { reposSource }) => {
+        if (reposSource === 'direct' && options === '') {
+          return 'reposSource is direct ,options must required '
+        }
+        return true
+      }
+    },]).then(result => {
       resolve(result)
     }).catch((e) => {
       console.error('error', e)

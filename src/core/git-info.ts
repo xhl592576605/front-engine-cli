@@ -3,6 +3,7 @@ import IRemoteGit from "../interface/remote-git"
 import Github from '../utils/github'
 import Gitlab from '../utils/gitlab'
 import Gitee from "../utils/gitee"
+import Direct from "../utils/direct"
 
 export default class GitInfo {
   gitHelper: IRemoteGit
@@ -19,6 +20,9 @@ export default class GitInfo {
         break
       case 'gitee':
         this.gitHelper = new Gitee(this.conf)
+        break
+      case 'direct':
+        this.gitHelper = new Direct(this.conf)
         break
       default:
         break

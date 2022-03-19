@@ -1,6 +1,6 @@
 {
   "name": "front-engine-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "front-engine cli ",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
