@@ -19,7 +19,7 @@ export default class Github implements IRemoteGit {
         data: []
       }
     })
-    result = res.data.map(x => x.name)
+    result = res.data.map(x => ({ name: x.name, value: `${x.name}|${x.id}` }))
     return result
   }
 
@@ -32,18 +32,14 @@ export default class Github implements IRemoteGit {
         data: []
       }
     })
-    // result = res.data.map(x => ({
-    //   name: x.name,
-    //   fullName: x.full_name,
-    //   url: x.url
-    // }))
-    result = res.data.map(x => x.name)
+    result = res.data.map(x => ({ name: x.name, value: `${x.name}|${x.id}` }))
     return result
   }
 
   async getOrgBranches(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET /repos/${group}/${repos}/branches`).catch(() => {
+    const [repo,] = repos.split('|')
+    const res = await this.octokit.request(`GET /repos/${group}/${repo}/branches`).catch(() => {
       return {
         data: []
       }
@@ -54,7 +50,8 @@ export default class Github implements IRemoteGit {
 
   async getUserBranches(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET /repos/${group}/${repos}/branches`).catch(() => {
+    const [repo,] = repos.split('|')
+    const res = await this.octokit.request(`GET /repos/${group}/${repo}/branches`).catch(() => {
       return {
         data: []
       }
@@ -64,7 +61,8 @@ export default class Github implements IRemoteGit {
   }
   async getOrgTags(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET /repos/${group}/${repos}/tags`).catch(() => {
+    const [repo,] = repos.split('|')
+    const res = await this.octokit.request(`GET /repos/${group}/${repo}/tags`).catch(() => {
       return {
         data: []
       }
@@ -75,7 +73,8 @@ export default class Github implements IRemoteGit {
 
   async getUserTags(group, repos) {
     let result = []
-    const res = await this.octokit.request(`GET /repos/${group}/${repos}/tags`).catch(() => {
+    const [repo,] = repos.split('|')
+    const res = await this.octokit.request(`GET /repos/${group}/${repo}/tags`).catch(() => {
       return {
         data: []
       }

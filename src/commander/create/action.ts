@@ -108,7 +108,7 @@ export default async (app) => {
   let reposChoices = []
   await Loading(async (_spinner, result) => {
     reposChoices = (await gitInfo.getRepositories(result.type, result.group))
-      .map(repo => ({ name: repo, value: repo }))
+      .map(repo => ({ name: repo.name, value: repo.value }))
   }, 'search repos...', result)
 
   if (reposChoices.length == 0) {

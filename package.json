@@ -1,6 +1,6 @@
 {
   "name": "front-engine-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "front-engine cli ",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -30,23 +30,24 @@
   },
   "homepage": "https://github.com/xhl592576605/front-engine-cli#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "cac": "^6.7.12",
     "chalk": "^4.1.0",
     "clear-console": "^1.1.0",
     "commander": "^6.2.0",
+    "download": "^7.1.0",
     "download-git-repo": "^3.0.2",
     "easy-table": "^1.2.0",
     "figlet": "^1.5.2",
     "fs-extra": "^10.0.1",
+    "git-clone": "^0.1.0",
     "inquirer": "^7.3.3",
     "octokit": "^1.7.1",
     "ora": "^6.1.0",
-    "shelljs": "^0.8.4",
-    "spinnies": "^0.5.1",
-    "download": "^7.1.0",
-    "git-clone": "^0.1.0",
     "rimraf": "^3.0.0",
-    "rxjs":"^7.5.5"
+    "rxjs": "^7.5.5",
+    "shelljs": "^0.8.4",
+    "spinnies": "^0.5.1"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.8.1",

@@ -1,8 +1,10 @@
 
 export interface IRepos {
+  id: string;
   name: string;
   fullName: string;
   url: string;
+  value: string;
 }
 export default interface IRemoteGit {
   getOrgRepos: (name: string) => Promise<Array<IRepos>>

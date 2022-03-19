@@ -1,6 +1,8 @@
 import { IConf } from "../interface/config"
 import IRemoteGit from "../interface/remote-git"
 import Github from '../utils/github'
+import Gitlab from '../utils/gitlab'
+
 
 
 export default class GitInfo {
@@ -12,6 +14,9 @@ export default class GitInfo {
     switch (this.conf.reposSource) {
       case 'github':
         this.gitHelper = new Github(this.conf)
+        break
+      case 'gitlab':
+        this.gitHelper = new Gitlab(this.conf)
         break
       default:
         break

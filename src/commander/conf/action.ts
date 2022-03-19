@@ -132,6 +132,12 @@ export const initConfig = async () => {
         name: 'github',
         reposSource: 'github',
         api: 'https://api.github.com/'
+      },
+      gitlab: {
+        name: 'gitlab',
+        reposSource: 'gitlab',
+        ssh: '',
+        api: 'https://gitlab.com/',
       }
     })
   }
