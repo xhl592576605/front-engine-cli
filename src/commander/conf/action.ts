@@ -138,6 +138,12 @@ export const initConfig = async () => {
         reposSource: 'gitlab',
         ssh: '',
         api: 'https://gitlab.com/',
+      },
+      gitee: {
+        name: 'gitee',
+        reposSource: 'gitee',
+        ssh: '',
+        api: 'https://gitee.com/',
       }
     })
   }
