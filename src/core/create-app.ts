@@ -15,7 +15,7 @@ export default async (spinner, option) => {
   //* 下载源代码
   spinner.update('download repos...')
   const [repo,] = repos.split('|')
-  await download(path, conf.reposSource, group, repo, branch)
+  await download(path, conf, group, repo, branch)
 
   // * 设置包名为项目名
   spinner.update('app setting...')

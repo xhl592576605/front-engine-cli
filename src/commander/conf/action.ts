@@ -60,7 +60,13 @@ const getAddAndUpdatePrompt = (type: 'add' | 'update'): Promise<any> => {
       type: 'input',
       name: 'token',
       message: 'token',
-      default: 'token'
+      default: ''
+    },
+    {
+      type: 'input',
+      name: 'tokenKey',
+      message: 'tokenKey',
+      default: ''
     },
     {
       type: 'editor',

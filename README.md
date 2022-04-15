@@ -20,6 +20,7 @@ For more info, run any command with the `--help` flag:
 Options:
   -v, --version  Display version number 
   -h, --help     Display this message 
+
 ```
 
 
@@ -42,41 +43,43 @@ Options:
 
 - name: 配置名称
 - reposSource: 远端配置（github，gitlab，gitee，direct）
-- ssh：ssh的地址，只有direct，才需要填写
+- ssh：ssh的地址，只有direct，才需要填写 例子（ssh://git@192.168.104.73:10122/）
 - api: 请求组织，用户，仓库，分支，tag的信息api，比如github=> https:/github.com/
-- token: 请求接口需要的token，暂时不需要
+- toeknKey： 请求接口头部的token的key值，只在reposSource=direct生效
+- token: 请求接口需要的token，只在reposSource=direct生效
 - options： 若是自定义，需要设置组织，用户，仓库，分支，tag的具体api地址
   比如（花括号的是动态变量，创建的时候会自动替换值，具体看下面）
+
   ``` json
   {
-    orgRepos: "/api/v4/groups/{name}/projects",
-    userRepos: "/api/v4/users/{name}/projects”,
-    orgBranches:”/api/v4/projects/{id}/repository/branches”,
-    userBranches:”/api/v4/projects/{id}/repository/branches”,
-    orgTags:”/api/v4/projects/{id}/repository/tags”,
-    userTags:”/api/v4/projects/{id}/repository/tags”
+    orgRepos:"/api/v4/groups/{name}/projects",
+    userRepos: "/api/v4/users/{name}/projects",
+    orgBranches:"/api/v4/projects/{id}/repository/branches",
+    userBranches:"/api/v4/projects/{id}/repository/branches",
+    orgTags:"/api/v4/projects/{id}/repository/tags",
+    userTags:"/api/v4/projects/{id}/repository/tags"
   }
   ```
   - 其中orgRepos与userRepos，有代替值
   ``` json
   {
-    name:'组织名或用户名'
+    name:"组织名或用户名"
   }
   ```
   - 其中orgBranches与userBranches，有代替值
    ``` json
   {
-    name:'组织名或用户名'，
-    repo：'仓库名'，
-    id：'仓库id'
+    name:"组织名或用户名"，
+    repo："仓库名"，
+    id："仓库id"
   }
   ```
   - 其中orgTags与userTags，有代替值
   ``` json
   {
-    name:'组织名或用户名'，
-    repo：'仓库名'，
-    id：'仓库id'
+    name:"组织名或用户名"，
+    repo："仓库名"，
+    id："仓库id"
   }
   ```
 
